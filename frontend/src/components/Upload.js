@@ -19,16 +19,21 @@ const Upload = () => {
     setSelectedFile(file);
   };
   const uploadImage = async (base64EncodedImage) => {
+    const poroduct = {
+      title: "Aos",
+      price: 8888,
+    };
     console.log(base64EncodedImage);
-    const postData = JSON.stringify({ data: base64EncodedImage });
+    const postData = JSON.stringify({ img: base64EncodedImage, poroduct });
     let axiosConfig = {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzE1ZWI0MjE1ZDM2OTkyOGZlNDQyZDYiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NjIzODMxNjYsImV4cCI6MTY2MjQ2OTU2Nn0.zRciCgB5dGa9YejIdM1DF3EMhCih8_Iak8gDwIqDaeA"}`,
       },
     };
     try {
-      await axios.post(
-        "http://localhost:3001/api/upload",
+      const res = await axios.post(
+        "http://localhost:8080/api/v1/addproduct",
         postData,
         axiosConfig
       );
@@ -38,6 +43,7 @@ const Upload = () => {
       //     body: JSON.stringify({ data: base64EncodedImage }),
       //     headers: { "Content-Type": "application/json" },
       //   });
+      console.log(res);
       console.log("upload success");
     } catch (err) {
       console.error(err);

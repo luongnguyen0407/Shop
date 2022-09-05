@@ -21,6 +21,11 @@ const creacteRefreshToken = (payload) => {
   });
 };
 
+//Update token
+const updateToken = async (payload, refreshToken) => {
+  await User.updateOne({ _id: payload._id }, { $set: { refreshToken } });
+};
+
 //route register
 const register = async (req, res) => {
   const { username, password } = req.body;
@@ -44,7 +49,7 @@ const register = async (req, res) => {
     await newUser.save();
     const refreshToken = creacteRefreshToken(newUser);
     const accessToken = creacteAccessToken(newUser);
-    await User.updateOne({ _id: newUser._id }, { $set: { refreshToken } });
+    updateToken(newUser, refreshToken);
     res.cookie("ref", refreshToken, {
       httpOnly: true,
       secure: false,
@@ -94,7 +99,7 @@ const login = async (req, res) => {
     //return token
     const accessToken = creacteAccessToken(user);
     const refreshToken = creacteRefreshToken(user);
-    await User.updateOne({ _id: user._id }, { $set: { refreshToken } });
+    updateToken(user, refreshToken);
     res.cookie("ref", refreshToken, {
       httpOnly: true,
       secure: false,
@@ -107,13 +112,55 @@ const login = async (req, res) => {
       isAdmin: user.isAdmin,
       accessToken,
     });
-  } catch (error) {}
+  } catch (error) {
+    return res.status(403).jsonp({
+      success: false,
+      message: "Token invalid",
+    });
+  }
 };
 
-const refreshToken = async (req, res) => {};
+const createNewToken = async (req, res) => {
+  const refreshToken = req.cookies?.ref;
+  if (!refreshToken)
+    return res.status(400).jsonp({
+      success: false,
+      message: "Missing refreshToken",
+    });
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const user = await User.findOne({
+      $or: [{ _id: decoded.userId }, { refreshToken }],
+    });
+    if (!user)
+      return res.status(403).jsonp({
+        success: false,
+        message: "Token invalid",
+      });
+    const newAccessToken = creacteAccessToken(user);
+    const newRefreshToken = creacteRefreshToken(user);
+    updateToken(user, newRefreshToken);
+    res.cookie("ref", newRefreshToken, {
+      httpOnly: true,
+      secure: false,
+      path: "/",
+      sameSite: "strict",
+    });
+    return res.status(200).jsonp({
+      success: true,
+      newAccessToken,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(403).jsonp({
+      success: false,
+      message: "Token invalid",
+    });
+  }
+};
 
 module.exports = {
   register,
   login,
-  refreshToken,
+  createNewToken,
 };
