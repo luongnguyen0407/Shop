@@ -119,6 +119,23 @@ const login = async (req, res) => {
     });
   }
 };
+// route logOut
+const logOut = async (req, res) => {
+  const { userId } = req.user;
+  try {
+    await User.updateOne({ _id: userId }, { $set: { refreshToken: null } });
+    res.clearCookie("ref");
+    res.status(200).json({
+      success: true,
+      message: "Logged out successfully!",
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "Logged out error!",
+    });
+  }
+};
 
 const createNewToken = async (req, res) => {
   const refreshToken = req.cookies?.ref;
@@ -163,4 +180,5 @@ module.exports = {
   register,
   login,
   createNewToken,
+  logOut,
 };
