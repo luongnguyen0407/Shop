@@ -5,7 +5,9 @@ const verifyMiddle = require("../middleware/auth");
 const route = express.Router();
 
 const initApiRoute = (app) => {
-  route.get("/getProduct", apiController.getProduct);
+  route.get("/getproduct", apiController.getProduct);
+  route.get("/getcategory", apiController.getCategory);
+  route.post("/addcart", verifyMiddle.verifyToken, apiController.addCart);
   route.post(
     "/addproduct",
     verifyMiddle.verifyToken,
