@@ -10,29 +10,23 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from "redux/auth/authSlide";
-const LoginPage = () => {
-  const dispatch = useDispatch();
-  const { curentUser, loading, authError } = useSelector((state) => state.auth);
+const RegisterPage = () => {
   const schema = yup.object({
     username: yup.string().required("Bạn cần nhập username"),
     password: yup.string().required("Bạn cần nhập password"),
+    rfpassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords không khớp"),
   });
   const {
     handleSubmit,
     formState: { errors },
     control,
   } = useForm({
-    defaultValues: {
-      username: "",
-      password: "",
-    },
     resolver: yupResolver(schema),
   });
-  const formSubmitHandler = (value) => {
+  const RegisterHandler = (value) => {
     console.log(value);
-    dispatch(userLogin(value));
   };
   useEffect(() => {
     if (errors) {
@@ -40,21 +34,14 @@ const LoginPage = () => {
       toast.error(firstErr[0]?.message);
     }
   }, [errors]);
-  useEffect(() => {
-    if (curentUser.accessToken && !authError) {
-      toast.success("Login successfully");
-    } else if (!curentUser.accessToken && authError) {
-      toast.error(authError);
-    }
-  }, [curentUser, authError]);
   return (
     <AuthLayout>
       <div className="h-full p-4 px-12 bg-white">
         <Heading className="text-3xl text-grey_800">Welcome Back!</Heading>
-        <Heading className="mb-12 text-sm text-grey_400">
+        <Heading className="text-sm text-grey_400 mb-8">
           Let's build something great
         </Heading>
-        <form onSubmit={handleSubmit(formSubmitHandler)}>
+        <form onSubmit={handleSubmit(RegisterHandler)}>
           <Field>
             <Label htmlFor="username">Username</Label>
             <Input control={control} name="username"></Input>
@@ -63,16 +50,18 @@ const LoginPage = () => {
             <Label htmlFor="password">Password</Label>
             <Input control={control} name="password"></Input>
           </Field>
-          <div className="mb-3 mt-7">
-            <Button isLoading={loading} type="submit">
-              Sign in
-            </Button>
+          <Field>
+            <Label htmlFor="rfpassword">Confirm Password</Label>
+            <Input control={control} name="rfpassword"></Input>
+          </Field>
+          <div className="mt-5 mb-2">
+            <Button type="submit">Sign in</Button>
           </div>
         </form>
         <p className="text-center">
           Don't have an account?
-          <Link to={"/register"} className="ml-1 text-blue-300">
-            Register
+          <Link to={"/login"} className="text-blue-300 ml-1">
+            Login
           </Link>
         </p>
       </div>
@@ -80,4 +69,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
