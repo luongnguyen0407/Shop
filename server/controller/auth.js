@@ -176,9 +176,39 @@ const createNewToken = async (req, res) => {
   }
 };
 
+const connect = async (req, res) => {
+  const refreshToken = req.cookies?.ref;
+  if (!refreshToken) {
+    return res.status(403).jsonp({
+      success: false,
+      message: "User not login",
+    });
+  }
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const user = await User.findOne({
+      $or: [{ _id: decoded.userId }, { refreshToken }],
+    });
+    const accessToken = creacteAccessToken(user);
+    return res.status(200).jsonp({
+      username: user.username,
+      id: user._id,
+      isAdmin: user.isAdmin,
+      accessToken,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(403).jsonp({
+      success: false,
+      message: "User not login",
+    });
+  }
+};
+
 module.exports = {
   register,
   login,
   createNewToken,
   logOut,
+  connect,
 };

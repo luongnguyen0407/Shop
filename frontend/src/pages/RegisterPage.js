@@ -10,10 +10,17 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "redux/auth/authSlide";
 const RegisterPage = () => {
+  const dispatch = useDispatch();
+  const { loading, authError } = useSelector((state) => state.auth);
   const schema = yup.object({
     username: yup.string().required("Bạn cần nhập username"),
-    password: yup.string().required("Bạn cần nhập password"),
+    password: yup
+      .string()
+      .min(8, "Password cần lớn hơn 8 kí tự")
+      .required("Bạn cần nhập password"),
     rfpassword: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords không khớp"),
@@ -23,10 +30,17 @@ const RegisterPage = () => {
     formState: { errors },
     control,
   } = useForm({
+    mode: "onSubmit",
     resolver: yupResolver(schema),
+    defaultValues: {
+      username: "",
+      password: "",
+      rfpassword: "",
+    },
   });
   const RegisterHandler = (value) => {
     console.log(value);
+    dispatch(userLogin(value, "heloo"));
   };
   useEffect(() => {
     if (errors) {
@@ -34,12 +48,16 @@ const RegisterPage = () => {
       toast.error(firstErr[0]?.message);
     }
   }, [errors]);
+  useEffect(() => {
+    if (authError) toast.error(authError);
+  }, [authError]);
+  console.log("register re-render");
   return (
     <AuthLayout>
       <div className="h-full p-4 px-12 bg-white">
-        <Heading className="text-3xl text-grey_800">Welcome Back!</Heading>
-        <Heading className="text-sm text-grey_400 mb-8">
-          Let's build something great
+        <Heading className="text-3xl text-grey_800">Woah! We met again</Heading>
+        <Heading className="mb-8 text-sm text-grey_400">
+          Let's fastly get registered
         </Heading>
         <form onSubmit={handleSubmit(RegisterHandler)}>
           <Field>
@@ -55,12 +73,14 @@ const RegisterPage = () => {
             <Input control={control} name="rfpassword"></Input>
           </Field>
           <div className="mt-5 mb-2">
-            <Button type="submit">Sign in</Button>
+            <Button isLoading={loading} type="submit">
+              Sign in
+            </Button>
           </div>
         </form>
         <p className="text-center">
-          Don't have an account?
-          <Link to={"/login"} className="text-blue-300 ml-1">
+          Have an account?
+          <Link to={"/login"} className="ml-1 text-blue-300">
             Login
           </Link>
         </p>

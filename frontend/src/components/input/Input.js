@@ -7,7 +7,7 @@ const Input = ({ control, name, ...res }) => {
   return (
     <input
       id={name}
-      className="input-sig w-full outline-none p-2 rounded-lg bg-gray-100 focus:border border border-transparent focus:border-gray-200 focus:bg-white transition-all"
+      className="w-full p-2 transition-all bg-gray-100 border border-transparent rounded-lg outline-none input-sig focus:border focus:border-gray-200 focus:bg-white"
       {...res}
       {...field}
     ></input>

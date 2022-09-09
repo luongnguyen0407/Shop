@@ -1,3 +1,4 @@
+import Main from "pages/Main";
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -10,13 +11,15 @@ function App() {
     <div className="App">
       <Suspense>
         <ToastContainer theme="colored" />
-        <Routes>
-          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-          <Route
-            path="/register"
-            element={<RegisterPage></RegisterPage>}
-          ></Route>
-        </Routes>
+        <Main>
+          <Routes>
+            <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+            <Route
+              path="/register"
+              element={<RegisterPage></RegisterPage>}
+            ></Route>
+          </Routes>
+        </Main>
       </Suspense>
     </div>
   );

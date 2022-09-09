@@ -14,7 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "redux/auth/authSlide";
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const { curentUser, loading, authError } = useSelector((state) => state.auth);
+  // const navigate = useNavigate();
+  const { loading, authError } = useSelector((state) => state.auth);
   const schema = yup.object({
     username: yup.string().required("Bạn cần nhập username"),
     password: yup.string().required("Bạn cần nhập password"),
@@ -31,7 +32,6 @@ const LoginPage = () => {
     resolver: yupResolver(schema),
   });
   const formSubmitHandler = (value) => {
-    console.log(value);
     dispatch(userLogin(value));
   };
   useEffect(() => {
@@ -41,12 +41,9 @@ const LoginPage = () => {
     }
   }, [errors]);
   useEffect(() => {
-    if (curentUser.accessToken && !authError) {
-      toast.success("Login successfully");
-    } else if (!curentUser.accessToken && authError) {
-      toast.error(authError);
-    }
-  }, [curentUser, authError]);
+    if (authError) toast.error(authError);
+  }, [authError]);
+  console.log("login re-render");
   return (
     <AuthLayout>
       <div className="h-full p-4 px-12 bg-white">

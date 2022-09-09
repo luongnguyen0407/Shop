@@ -1,14 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Label = ({ children, htmlFor = "" }) => {
   return (
     <label
-      className="text-base text-grey_400 font-semibold cursor-pointer"
+      className="text-base font-semibold cursor-pointer text-grey_400"
       htmlFor={htmlFor}
     >
       {children}
     </label>
   );
 };
-
+Label.propTypes = {
+  htmlFor: PropTypes.string.isRequired,
+};
 export default Label;

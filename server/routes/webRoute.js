@@ -25,6 +25,7 @@ const initApiRoute = (app) => {
 const authRoute = (app) => {
   route.post("/register", apiAuth.register);
   route.post("/login", apiAuth.login);
+  route.post("/connect", apiAuth.connect);
   route.post("/logout", verifyMiddle.verifyToken, apiAuth.logOut);
   route.post("/token", apiAuth.createNewToken);
   return app.use("/api/auth", route);

@@ -6,6 +6,7 @@ const authSlide = createSlice({
     curentUser: {},
     loading: false,
     authError: "",
+    isLogin: false,
   },
   reducers: {
     setDataUser: (state, action) => ({
@@ -13,6 +14,8 @@ const authSlide = createSlice({
       curentUser: action.payload,
     }),
     userLogin: () => {},
+    connectStart: () => {},
+    userRegister: () => {},
     setLoading: (state, action) => ({
       ...state,
       loading: action.payload,
@@ -21,9 +24,20 @@ const authSlide = createSlice({
       ...state,
       authError: action.payload,
     }),
+    setLogin: (state, action) => ({
+      ...state,
+      isLogin: action.payload,
+    }),
   },
 });
 
-export const { userLogin, setLoading, setDataUser, setError } =
-  authSlide.actions;
+export const {
+  userLogin,
+  setLoading,
+  setDataUser,
+  setError,
+  connectStart,
+  setLogin,
+  userRegister,
+} = authSlide.actions;
 export default authSlide.reducer;
