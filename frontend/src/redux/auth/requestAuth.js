@@ -1,7 +1,6 @@
 import axiosClient from "axios/configAxios";
 
 export const reqLogin = (value) => {
-  console.log(value + "login");
   return axiosClient.request({
     method: "post",
     url: "/auth/login",
@@ -13,7 +12,7 @@ export const reqRegister = (value) => {
   const { rfpassword, ...res } = value;
   return axiosClient.request({
     method: "post",
-    url: "/auth//register",
+    url: "/auth/register",
     data: { ...res },
   });
 };

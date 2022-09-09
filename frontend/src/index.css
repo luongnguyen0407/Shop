@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: "Euclid Circular A", sans-serif;
+  }
+}
 .input-sig:focus + .field-err {
   display: none;
+}
+.container-fix {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.search-header:focus + .list-sp {
+  display: flex;
 }

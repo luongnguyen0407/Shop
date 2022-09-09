@@ -10,7 +10,7 @@ const getProduct = async (req, res) => {
       const query = search.replace(/['"]+/g, "");
       let replace = `^${query}`;
       let re = new RegExp(replace, "i");
-      const productList = await Product.find({ color: { $in: re } });
+      const productList = await Product.find({ title: { $in: re } });
       return res.status(200).jsonp({
         success: true,
         message: `Good job`,

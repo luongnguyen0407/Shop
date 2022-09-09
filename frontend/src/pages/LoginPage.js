@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "redux/auth/authSlide";
 const LoginPage = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const { loading, authError } = useSelector((state) => state.auth);
   const schema = yup.object({
     username: yup.string().required("Bạn cần nhập username"),
@@ -34,6 +33,7 @@ const LoginPage = () => {
   const formSubmitHandler = (value) => {
     dispatch(userLogin(value));
   };
+
   useEffect(() => {
     if (errors) {
       const firstErr = Object.values(errors);
@@ -58,11 +58,11 @@ const LoginPage = () => {
           </Field>
           <Field>
             <Label htmlFor="password">Password</Label>
-            <Input control={control} name="password"></Input>
+            <Input icon control={control} name="password"></Input>
           </Field>
           <div className="mb-3 mt-7">
             <Button isLoading={loading} type="submit">
-              Sign in
+              Login
             </Button>
           </div>
         </form>

@@ -41,7 +41,7 @@ const register = async (req, res) => {
     const user = await User.findOne({ username });
     if (user)
       return res
-        .status(400)
+        .status(401)
         .jsonp({ success: false, message: "Username already" });
     //hashed pass
     const hashedPass = await argon2.hash(password);
@@ -86,14 +86,14 @@ const login = async (req, res) => {
     const user = await User.findOne({ username });
     if (!user)
       return res
-        .status(400)
+        .status(401)
         .jsonp({ success: false, message: "Incorrect username or password" });
     const passwordValid = await argon2.verify(user.password, password);
 
     //check pass
     if (!passwordValid)
       return res
-        .status(400)
+        .status(401)
         .jsonp({ success: false, message: "Incorrect username or password" });
 
     //return token
@@ -130,7 +130,7 @@ const logOut = async (req, res) => {
       message: "Logged out successfully!",
     });
   } catch (error) {
-    res.status(400).json({
+    res.status(401).json({
       success: false,
       message: "Logged out error!",
     });
@@ -178,8 +178,9 @@ const createNewToken = async (req, res) => {
 
 const connect = async (req, res) => {
   const refreshToken = req.cookies?.ref;
+  console.log("connect");
   if (!refreshToken) {
-    return res.status(403).jsonp({
+    return res.status(401).jsonp({
       success: false,
       message: "User not login",
     });

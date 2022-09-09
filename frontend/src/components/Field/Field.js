@@ -1,7 +1,7 @@
 import React from "react";
 
 const Field = ({ children }) => {
-  return <div className="flex flex-col gap-y-2 relative">{children}</div>;
+  return <div className="relative flex flex-col mb-2 gap-y-2">{children}</div>;
 };
 
 export default Field;

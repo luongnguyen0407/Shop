@@ -1,5 +1,5 @@
 import { takeLatest } from "redux-saga/effects";
-import { connectStart, userLogin, userRegister } from "./authSlide";
+import { connectStart, userLogin } from "./authSlide";
 import { connectReLoad, handleLogin } from "./workSaga";
 
 export default function* authSaga() {

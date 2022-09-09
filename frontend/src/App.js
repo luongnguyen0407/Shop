@@ -3,8 +3,10 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const LoginPage = lazy(() => import("./pages/LoginPage"));
-const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const LoginPage = lazy(() => import("pages/LoginPage"));
+const HomePage = lazy(() => import("pages/HomePage"));
+const MainLayout = lazy(() => import("components/Layouts/MainLayout"));
+const RegisterPage = lazy(() => import("pages/RegisterPage"));
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
               path="/register"
               element={<RegisterPage></RegisterPage>}
             ></Route>
+            <Route element=<MainLayout></MainLayout>>
+              <Route index element=<HomePage></HomePage>></Route>
+            </Route>
           </Routes>
         </Main>
       </Suspense>

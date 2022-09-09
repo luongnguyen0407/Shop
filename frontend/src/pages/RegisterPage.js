@@ -66,11 +66,11 @@ const RegisterPage = () => {
           </Field>
           <Field>
             <Label htmlFor="password">Password</Label>
-            <Input control={control} name="password"></Input>
+            <Input icon control={control} name="password"></Input>
           </Field>
           <Field>
             <Label htmlFor="rfpassword">Confirm Password</Label>
-            <Input control={control} name="rfpassword"></Input>
+            <Input icon control={control} name="rfpassword"></Input>
           </Field>
           <div className="mt-5 mb-2">
             <Button isLoading={loading} type="submit">

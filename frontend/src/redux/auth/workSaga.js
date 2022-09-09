@@ -24,12 +24,13 @@ export function* handleLogin({ payload }) {
 }
 export function* connectReLoad() {
   try {
-    yield put(setLoading(true));
     const res = yield call(resConnect);
     yield all([
       put(setDataUser(res)),
       put(setLogin(true)),
       put(setLoading(false)),
     ]);
-  } catch (error) {}
+  } catch (error) {
+    put(setLoading(false));
+  }
 }
