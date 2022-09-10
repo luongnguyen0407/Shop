@@ -11,6 +11,7 @@ module.exports = {
         primary: "#F7C59F",
         secondary: "#DE4F46",
         text1: "#1F2937",
+        grey_100: "#F3F4F6",
         grey_400: "#9CA3AF",
         grey_500: "#6B7280",
         grey_700: "#374151",
