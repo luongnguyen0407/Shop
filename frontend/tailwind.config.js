@@ -18,6 +18,7 @@ module.exports = {
         grey_800: "#1F2937",
         grey_900: "#111827",
         text3: "#FAFAFA",
+        highlight: "rgba(0, 0, 0, 0.3)",
       },
     },
   },

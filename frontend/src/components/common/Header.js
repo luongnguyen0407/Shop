@@ -1,3 +1,4 @@
+import { LIST_PROFILE } from "assets/Const";
 import Heading from "components/heading/Heading";
 import InputSearch from "components/input/InputSearch";
 import Title from "components/Title/Title";
@@ -12,25 +13,6 @@ import Category from "./Category";
 import ErrorFallback from "./ErrorFallback";
 import List from "./List";
 
-const LIST_PROFILE = [
-  {
-    title: "Store",
-    to: "/",
-  },
-  {
-    title: "Account",
-    to: "/",
-  },
-  {
-    title: "Wish List",
-    to: "/",
-  },
-  {
-    title: "Basket",
-    to: "/",
-  },
-];
-
 const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearchTerm = useDebounce(searchValue, 500);
@@ -44,6 +26,7 @@ const Header = () => {
       dispatch(searchProduct(debouncedSearchTerm));
     }
   }, [debouncedSearchTerm, dispatch]);
+
   return (
     <>
       <div className="px-2 py-3 bg-text3">
@@ -53,7 +36,7 @@ const Header = () => {
               Laura's Closet
             </Heading>
           </Link>
-          <div ref={nodeRef} className="relative">
+          <div ref={nodeRef} className="relative flex-1 max-w-xs">
             <InputSearch
               onClick={() => {
                 setShow(!show);

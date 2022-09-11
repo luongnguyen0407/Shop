@@ -8,7 +8,7 @@ const getProduct = async (req, res) => {
   try {
     if (search && search.length > 0) {
       const query = search.replace(/['"]+/g, "");
-      let replace = `^${query}`;
+      let replace = `${query}`;
       let re = new RegExp(replace, "i");
       const productList = await Product.find({ title: { $in: re } });
       return res.status(200).jsonp({

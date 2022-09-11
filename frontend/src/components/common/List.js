@@ -10,7 +10,7 @@ const List = ({ show, nodeRef }) => {
       {show && (
         <ul
           ref={nodeRef}
-          className="z-50 absolute flex flex-col w-full p-2 min-h-[100px] bg-white shadow-sm group top-full gap-y-3"
+          className="z-50 rounded-b-lg absolute flex flex-col w-full p-2 min-h-[100px] bg-white shadow-sm group top-full gap-y-3"
         >
           {loading && (
             <div className="w-5 h-5 mx-auto border-2 border-t-4 border-blue-300 rounded-full animate-spin border-t-transparent"></div>

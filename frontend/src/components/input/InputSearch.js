@@ -3,7 +3,7 @@ import React from "react";
 
 const InputSearch = ({ onChange = () => {}, onClick = () => {} }) => {
   return (
-    <div className="flex items-center text-sm border-b-2 border-gray-300 search-header">
+    <div className="flex items-center flex-1 w-full text-sm border-b-2 border-gray-300 div-search search-header">
       <IconSearch />
       <input
         onClick={onClick}

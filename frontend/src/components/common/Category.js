@@ -10,7 +10,7 @@ const Category = () => {
     dispatch(getCategory());
   }, [dispatch]);
   return (
-    <div className="p-2 py-4">
+    <div className="p-2 py-4 min-h-[56px]">
       <div className="flex justify-between container-fix">
         {listCategory.length > 0 &&
           listCategory.map((item) => (
