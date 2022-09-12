@@ -1,13 +1,17 @@
+import React from "react";
 import ButtonArrow from "components/button/ButtonArrow";
 import HeadingXl from "components/heading/HeadingXl";
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import LazyLoad from "../common/LazyLoad";
 import { BANNER_IMG } from "assets/Const";
 import { withErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "components/common/ErrorFallback";
+import { useEffect } from "react";
 const Banner = () => {
+  useEffect(() => {
+    console.log("domloaddon");
+  }, []);
   return (
     <div className="relative h-[500px] p-20 flex items-start md:items-end pb-7 justify-center">
       <div className="absolute inset-0 w-full h-full">

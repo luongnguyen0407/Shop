@@ -6,6 +6,7 @@ import { withErrorBoundary } from "react-error-boundary";
 import { HighlightItem } from "./HighlightItem";
 
 const Highlights = () => {
+  console.log("re-render");
   return (
     <div className="mt-10 container-fix">
       <Heading className="text-2xl text-center" bar>
