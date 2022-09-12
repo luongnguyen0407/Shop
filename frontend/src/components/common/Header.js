@@ -1,4 +1,5 @@
 import { LIST_PROFILE } from "assets/Const";
+import axiosClient from "axios/configAxios";
 import Heading from "components/heading/Heading";
 import InputSearch from "components/input/InputSearch";
 import Title from "components/Title/Title";
@@ -8,24 +9,56 @@ import React, { useEffect, useState } from "react";
 import { withErrorBoundary } from "react-error-boundary";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchProduct } from "redux/product/productSlide";
+import { toast } from "react-toastify";
 import Category from "./Category";
 import ErrorFallback from "./ErrorFallback";
 import List from "./List";
 
 const Header = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [listProduct, setListProduct] = useState([]);
   const debouncedSearchTerm = useDebounce(searchValue, 500);
   const { show, setShow, nodeRef } = useClickOutSide(".search-header");
   const dispatch = useDispatch();
   const handleInputChange = (e) => {
     setSearchValue(e.target.value);
   };
+  const handleClearValue = () => {
+    setSearchValue("");
+  };
   useEffect(() => {
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const handleFetchProduct = async () => {
+      setIsLoading(true);
+      setShow(true);
+      let start = new Date();
+      try {
+        const { productList } = await axiosClient.request({
+          method: "get",
+          url: "/v1/getproduct",
+          params: {
+            search: debouncedSearchTerm,
+          },
+        });
+        setListProduct(productList);
+      } catch (error) {
+        toast.error("Sever error");
+      }
+      let end = new Date();
+      if (end - start > 1000) {
+        setIsLoading(false);
+      } else {
+        await delay(1000 - (end - start));
+        setIsLoading(false);
+      }
+    };
     if (debouncedSearchTerm) {
-      dispatch(searchProduct(debouncedSearchTerm));
+      handleFetchProduct();
+    } else {
+      setListProduct([]);
     }
-  }, [debouncedSearchTerm, dispatch]);
+  }, [debouncedSearchTerm, dispatch, setShow]);
 
   return (
     <>
@@ -41,9 +74,11 @@ const Header = () => {
               onClick={() => {
                 setShow(!show);
               }}
+              value={searchValue}
               onChange={handleInputChange}
+              clearValue={handleClearValue}
             ></InputSearch>
-            <List show={show}></List>
+            <List data={listProduct} loading={isLoading} show={show}></List>
           </div>
           <div className="flex gap-x-3">
             {LIST_PROFILE.map((item) => (

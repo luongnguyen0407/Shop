@@ -3,12 +3,14 @@ import ErrorFallback from "components/common/ErrorFallback";
 import Highlights from "components/home/Highlights";
 import React from "react";
 import { withErrorBoundary } from "react-error-boundary";
+import Popular from "components/home/Popular";
 
 const HomePage = () => {
   return (
     <div>
-      <Banner></Banner>
-      <Highlights></Highlights>
+      <Banner />
+      <Highlights />
+      <Popular />
     </div>
   );
 };
