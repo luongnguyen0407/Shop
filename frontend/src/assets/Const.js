@@ -74,3 +74,163 @@ export const LIST_PROFILE = [
     to: "/",
   },
 ];
+
+export const FOOTER_LIST = {
+  Company: [
+    {
+      title: "About Laura's Closet ",
+      to: "/",
+    },
+    {
+      title: "Social Responsibility ",
+      to: "/",
+    },
+    {
+      title: "Affiliate",
+      to: "/",
+    },
+    {
+      title: "Fashion Blogger",
+      to: "/",
+    },
+  ],
+  Help: [
+    {
+      title: "Shipping Info",
+      to: "/",
+    },
+    {
+      title: "Returns",
+      to: "/",
+    },
+    {
+      title: "How to Order",
+      to: "/",
+    },
+    {
+      title: "How to Track",
+      to: "/",
+    },
+    {
+      title: "Size Chart",
+      to: "/",
+    },
+  ],
+  Customer: [
+    {
+      title: "Contact Us",
+      to: "/",
+    },
+    {
+      title: "Payment",
+      to: "/",
+    },
+    {
+      title: "Bonus Point",
+      to: "/",
+    },
+    {
+      title: "Notices",
+      to: "/",
+    },
+  ],
+};
+
+export const LIST_ICON = {
+  Socials: [
+    {
+      id: 1,
+      src: "/Vector.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 2,
+      src: "/Vector2.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 3,
+      src: "/Vector3.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 4,
+      src: "/Vector4.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 5,
+      src: "/Vector5.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+  ],
+  Platforms: [
+    {
+      id: 1,
+      src: "/pla1.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 2,
+      src: "/pla2.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+  ],
+  Payment: [
+    {
+      id: 1,
+      src: "/pay1.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 2,
+      src: "/pay2.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 3,
+      src: "/pay3.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 4,
+      src: "/pay4.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 5,
+      src: "/pay5.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 9,
+      src: "/pay9.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 10,
+      src: "/pay10.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 11,
+      src: "/pay11.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 12,
+      src: "/pay12.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 13,
+      src: "/pay13.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+    {
+      id: 14,
+      src: "/pay14.png",
+      to: "https://www.facebook.com/profile.php?id=100003191908789",
+    },
+  ],
+};

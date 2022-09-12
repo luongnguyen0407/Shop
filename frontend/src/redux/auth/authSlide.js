@@ -16,6 +16,7 @@ const authSlide = createSlice({
     userLogin: () => {},
     connectStart: () => {},
     userRegister: () => {},
+    userLogOut: () => {},
     setLoading: (state, action) => ({
       ...state,
       loading: action.payload,
@@ -38,6 +39,7 @@ export const {
   setError,
   connectStart,
   setLogin,
+  userLogOut,
   userRegister,
 } = authSlide.actions;
 export default authSlide.reducer;

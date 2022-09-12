@@ -17,6 +17,17 @@ export const reqRegister = (value) => {
   });
 };
 
+export const logOut = (data) => {
+  return axiosClient.request({
+    method: "post",
+    url: "/auth/logout",
+    data: { ...data },
+    headers: {
+      Authorization: `Basic ${data.accessToken}`,
+    },
+  });
+};
+
 export const resConnect = () => {
   return axiosClient.request({
     method: "post",

@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import Category from "./Category";
 import ErrorFallback from "./ErrorFallback";
 import List from "./List";
+import Profile from "./Profile";
 
 const Header = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -89,6 +90,7 @@ const Header = () => {
                 title={item.title}
               />
             ))}
+            <Profile />
           </div>
         </div>
       </div>

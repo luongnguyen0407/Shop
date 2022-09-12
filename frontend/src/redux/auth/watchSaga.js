@@ -1,9 +1,9 @@
 import { takeLatest } from "redux-saga/effects";
-import { connectStart, userLogin } from "./authSlide";
-import { connectReLoad, handleLogin } from "./workSaga";
+import { connectStart, userLogin, userLogOut } from "./authSlide";
+import { connectReLoad, handleLogin, handleLogOut } from "./workSaga";
 
 export default function* authSaga() {
   yield takeLatest(userLogin.type, handleLogin);
   yield takeLatest(connectStart.type, connectReLoad);
-  // yield takeLatest(userRegister.type, connectReLoad);
+  yield takeLatest(userLogOut.type, handleLogOut);
 }

@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import axiosClient from "axios/configAxios";
 import ProductCardItem from "./ProductCardItem";
+import { withErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "components/common/ErrorFallback";
 const Popular = () => {
   const [isLoading, setIsLoading] = useState();
   const [productList, setListProduct] = useState([]);
@@ -32,7 +34,7 @@ const Popular = () => {
     handleFetchProduct();
   }, []);
   return (
-    <div className="px-3 mt-10 container-fix">
+    <div className="px-3 mt-20 container-fix">
       <Heading className="text-2xl text-center" bar>
         Popular this week
       </Heading>
@@ -76,4 +78,6 @@ const Popular = () => {
   );
 };
 
-export default Popular;
+export default withErrorBoundary(Popular, {
+  FallbackComponent: ErrorFallback,
+});

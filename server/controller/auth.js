@@ -178,9 +178,8 @@ const createNewToken = async (req, res) => {
 
 const connect = async (req, res) => {
   const refreshToken = req.cookies?.ref;
-  console.log("connect");
   if (!refreshToken) {
-    return res.status(401).jsonp({
+    return res.status(200).jsonp({
       success: false,
       message: "User not login",
     });

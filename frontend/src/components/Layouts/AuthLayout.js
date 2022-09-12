@@ -4,13 +4,13 @@ import { withErrorBoundary } from "react-error-boundary";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const AuthLayout = ({ children }) => {
-  const { isLogin } = useSelector((state) => state.auth);
+  const { curentUser } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
-    if (isLogin) {
+    if (curentUser.accessToken) {
       navigate("/");
     }
-  }, [navigate, isLogin]);
+  }, [navigate, curentUser]);
   return (
     <div className="flex items-center justify-center w-full min-h-screen bg-auth_bg">
       <div className="w-3/4 grid grid-cols-2 h-[450px] overflow-hidden rounded-3xl ">
