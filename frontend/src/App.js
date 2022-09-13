@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "swiper/css";
 import "react-toastify/dist/ReactToastify.css";
+const AdminLayout = lazy(() => import("components/Layouts/AdminLayout"));
+const Dashboard = lazy(() => import("pages/admin/Dashboard"));
 const LoginPage = lazy(() => import("pages/LoginPage"));
 const HomePage = lazy(() => import("pages/HomePage"));
 const MainLayout = lazy(() => import("components/Layouts/MainLayout"));
@@ -17,13 +19,13 @@ function App() {
         <Main>
           <Routes>
             <Route path="/">
-              <Route path="login" element={<LoginPage></LoginPage>}></Route>
-              <Route
-                path="register"
-                element={<RegisterPage></RegisterPage>}
-              ></Route>
-              <Route element=<MainLayout></MainLayout>>
-                <Route index element=<HomePage></HomePage>></Route>
+              <Route path="login" element={<LoginPage />}></Route>
+              <Route path="register" element={<RegisterPage />}></Route>
+              <Route element=<MainLayout />>
+                <Route index element=<HomePage />></Route>
+              </Route>
+              <Route element=<AdminLayout />>
+                <Route path="manage/dashboard" element=<Dashboard />></Route>
               </Route>
             </Route>
           </Routes>

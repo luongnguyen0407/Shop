@@ -1,3 +1,15 @@
+import {
+  AiOutlineDashboard,
+  AiOutlineUser,
+  AiOutlineUserAdd,
+  AiOutlineBarChart,
+  AiOutlineFileAdd,
+  AiOutlineReconciliation,
+  AiOutlineAppstoreAdd,
+  AiOutlineWallet,
+  AiOutlineSetting,
+  AiOutlineLock,
+} from "react-icons/ai";
 export const BANNER_IMG = [
   {
     id: 1,
@@ -234,3 +246,85 @@ export const LIST_ICON = {
     },
   ],
 };
+
+export const LIST_SIDEBAR = [
+  {
+    title: "Dashboard",
+    to: "/manage/dashboard",
+    icon: <AiOutlineDashboard />,
+  },
+  {
+    title: "User",
+    to: "/manage/user",
+    icon: <AiOutlineUser />,
+    subMenu: [
+      {
+        title: "List User",
+        to: "/manage/newuser",
+        icon: <AiOutlineUserAdd />,
+      },
+      {
+        title: "Add New User",
+        to: "/manage/newuser",
+        icon: <AiOutlineUserAdd />,
+      },
+    ],
+  },
+  {
+    title: "Category",
+    to: "/manage/category",
+    icon: <AiOutlineDashboard />,
+    subMenu: [
+      {
+        title: "List Category",
+        to: "/manage/category",
+        icon: <AiOutlineBarChart />,
+      },
+      {
+        title: "Add New Category",
+        to: "/manage/addcategory",
+        icon: <AiOutlineFileAdd />,
+      },
+    ],
+  },
+  {
+    title: "Products",
+    to: "/manage/product",
+    icon: <AiOutlineReconciliation />,
+    subMenu: [
+      {
+        title: "List product",
+        to: "/manage/product",
+        icon: <AiOutlineBarChart />,
+      },
+      {
+        title: "Add New Product",
+        to: "/manage/addproduct",
+        icon: <AiOutlineAppstoreAdd />,
+      },
+    ],
+  },
+];
+
+export const LIST_PROFILE_MENU = [
+  {
+    title: "Profile",
+    to: "/",
+    icon: <AiOutlineUser />,
+  },
+  {
+    title: "My Wallet",
+    to: "/",
+    icon: <AiOutlineWallet />,
+  },
+  {
+    title: "Manage",
+    to: "/manage/dashboard",
+    icon: <AiOutlineSetting />,
+  },
+  {
+    title: "Lock screen",
+    to: "/",
+    icon: <AiOutlineLock />,
+  },
+];

@@ -1,7 +1,9 @@
 import Heading from "components/heading/Heading";
 import Title from "components/Title/Title";
+import PropTypes from "prop-types";
 
 const ColItem = ({ data, title }) => {
+  if (!data) return null;
   return (
     <div className="flex flex-col gap-y-3">
       <Heading className="uppercase">{title}</Heading>
@@ -17,4 +19,8 @@ const ColItem = ({ data, title }) => {
   );
 };
 
+ColItem.propTypes = {
+  title: PropTypes.string,
+  data: PropTypes.array.isRequired,
+};
 export default ColItem;

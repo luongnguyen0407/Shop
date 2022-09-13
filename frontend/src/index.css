@@ -88,3 +88,7 @@ body::-webkit-scrollbar-thumb,
 .mt-6.slider_popular:hover .swiper-button-prev {
   opacity: 1;
 }
+.list_sidebar a.active {
+  background: #f7c59f;
+  color: white;
+}

@@ -28,6 +28,12 @@ const authRoute = (app) => {
   route.post("/connect", apiAuth.connect);
   route.post("/logout", verifyMiddle.verifyToken, apiAuth.logOut);
   route.post("/token", apiAuth.createNewToken);
+  route.delete(
+    "/deleleUser",
+    verifyMiddle.verifyToken,
+    verifyMiddle.verifyTokenAdmin,
+    apiAuth.DeleteUser
+  );
   return app.use("/api/auth", route);
 };
 

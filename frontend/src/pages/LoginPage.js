@@ -43,7 +43,6 @@ const LoginPage = () => {
   useEffect(() => {
     if (authError) toast.error(authError);
   }, [authError]);
-  console.log("login re-render");
   return (
     <AuthLayout>
       <div className="h-full p-4 px-12 bg-white">

@@ -205,10 +205,35 @@ const connect = async (req, res) => {
   }
 };
 
+const DeleteUser = async (req, res) => {
+  const { userDelete } = req.body;
+  if (!userDelete) {
+    return res.status(403).json({
+      status: false,
+      message: "Missing user Id",
+    });
+  }
+  try {
+    await User.deleteOne({
+      _id: userDelete,
+    });
+    return res.status(200).json({
+      status: true,
+      message: "Delete user success",
+    });
+  } catch (error) {
+    return res.status(401).json({
+      status: false,
+      message: "Error server",
+    });
+  }
+};
+
 module.exports = {
   register,
   login,
   createNewToken,
   logOut,
   connect,
+  DeleteUser,
 };
