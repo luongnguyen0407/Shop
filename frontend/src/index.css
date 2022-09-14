@@ -92,7 +92,22 @@ body::-webkit-scrollbar-thumb,
   background: #f7c59f;
   color: white;
 }
+
+/* tab in dashboard */
 .tab_short .active {
   background-color: #f7c59f;
   color: white;
+}
+
+/* hidden input in ImgUpload component */
+.hidden-input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }

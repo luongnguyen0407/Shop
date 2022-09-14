@@ -9,7 +9,7 @@ import { useDebounce } from "hooks/useDebounce";
 import { toast } from "react-toastify";
 import useClickOutSide from "hooks/useClickOutSide";
 
-const InputSearch = ({ value = "" }) => {
+const InputSearch = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [listProduct, setListProduct] = useState([]);
   const [searchValue, setSearchValue] = useState("");
