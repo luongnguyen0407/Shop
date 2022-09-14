@@ -9,6 +9,10 @@ import {
   AiOutlineWallet,
   AiOutlineSetting,
   AiOutlineLock,
+  AiOutlineMoneyCollect,
+  AiOutlineCreditCard,
+  AiOutlineSmile,
+  AiOutlineShopping,
 } from "react-icons/ai";
 export const BANNER_IMG = [
   {
@@ -299,7 +303,7 @@ export const LIST_SIDEBAR = [
       },
       {
         title: "Add New Product",
-        to: "/manage/addproduct",
+        to: "manage/newproduct",
         icon: <AiOutlineAppstoreAdd />,
       },
     ],
@@ -328,3 +332,181 @@ export const LIST_PROFILE_MENU = [
     icon: <AiOutlineLock />,
   },
 ];
+
+export const CARD_ADMIN = [
+  {
+    title: "Revenue",
+    cost: "$18,925",
+    icon: <AiOutlineMoneyCollect />,
+    color: "green",
+  },
+  {
+    title: "Expense",
+    cost: "$11,024",
+    icon: <AiOutlineCreditCard />,
+    color: "red",
+  },
+  {
+    title: "Happy Clients",
+    cost: "8,925",
+    icon: <AiOutlineSmile />,
+    color: "yellow",
+  },
+  {
+    title: "New Store Open",
+    cost: "18,925",
+    icon: <AiOutlineShopping />,
+    color: "sky",
+  },
+];
+
+export const DATA_CHAR = {
+  CHAR_TODAY: [
+    {
+      name: "Ha Tinh",
+      expense: 4000,
+      revenue: 2400,
+    },
+    {
+      name: "Vinh",
+      expense: 3000,
+      revenue: 1398,
+    },
+    {
+      name: "Ha Noi",
+      expense: 2000,
+      revenue: 9800,
+    },
+    {
+      name: "Da Nang",
+      expense: 2780,
+      revenue: 3908,
+    },
+    {
+      name: "Ho Chi Minh",
+      expense: 1890,
+      revenue: 4800,
+    },
+    {
+      name: "Can Tho",
+      expense: 2390,
+      revenue: 3800,
+    },
+    {
+      name: "Hai Phong",
+      expense: 3490,
+      revenue: 4300,
+    },
+  ],
+  CHAR_WEEK: [
+    {
+      name: "Ha Tinh",
+      expense: 9000,
+      revenue: 4400,
+    },
+    {
+      name: "Vinh",
+      expense: 6000,
+      revenue: 2398,
+    },
+    {
+      name: "Ha Noi",
+      expense: 8000,
+      revenue: 2800,
+    },
+    {
+      name: "Da Nang",
+      expense: 6780,
+      revenue: 7908,
+    },
+    {
+      name: "Ho Chi Minh",
+      expense: 4890,
+      revenue: 3800,
+    },
+    {
+      name: "Can Tho",
+      expense: 7390,
+      revenue: 2800,
+    },
+    {
+      name: "Hai Phong",
+      expense: 9490,
+      revenue: 6300,
+    },
+  ],
+  CHAR_MONTH: [
+    {
+      name: "Ha Tinh",
+      expense: 10000,
+      revenue: 2900,
+    },
+    {
+      name: "Vinh",
+      expense: 9000,
+      revenue: 4398,
+    },
+    {
+      name: "Ha Noi",
+      expense: 8000,
+      revenue: 6800,
+    },
+    {
+      name: "Da Nang",
+      expense: 8780,
+      revenue: 4908,
+    },
+    {
+      name: "Ho Chi Minh",
+      expense: 8890,
+      revenue: 3800,
+    },
+    {
+      name: "Can Tho",
+      expense: 9390,
+      revenue: 6800,
+    },
+    {
+      name: "Hai Phong",
+      expense: 7490,
+      revenue: 5300,
+    },
+  ],
+  CHAR_YEAR: [
+    {
+      name: "Ha Tinh",
+      expense: 7000,
+      revenue: 5400,
+    },
+    {
+      name: "Vinh",
+      expense: 7000,
+      revenue: 3398,
+    },
+    {
+      name: "Ha Noi",
+      expense: 7000,
+      revenue: 3800,
+    },
+    {
+      name: "Da Nang",
+      expense: 6780,
+      revenue: 3908,
+    },
+    {
+      name: "Ho Chi Minh",
+      expense: 6890,
+      revenue: 2800,
+    },
+    {
+      name: "Can Tho",
+      expense: 6390,
+      revenue: 3800,
+    },
+    {
+      name: "Hai Phong",
+      expense: 7490,
+      revenue: 4300,
+    },
+  ],
+};

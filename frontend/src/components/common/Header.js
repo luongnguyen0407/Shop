@@ -1,4 +1,3 @@
-import useClickOutSide from "hooks/useClickOutSide";
 import Title from "components/Title/Title";
 import React from "react";
 import Profile from "./Profile";
@@ -11,7 +10,6 @@ import { LIST_PROFILE } from "assets/Const";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { show, setShow, nodeRef } = useClickOutSide(".search-header");
   return (
     <>
       <div className="px-2 py-3 bg-text3">
@@ -21,8 +19,8 @@ const Header = () => {
               Laura's Closet
             </Heading>
           </Link>
-          <div ref={nodeRef} className="relative flex-1 max-w-xs">
-            <InputSearch setShow={setShow} show={show}></InputSearch>
+          <div className="relative flex-1 max-w-xs">
+            <InputSearch></InputSearch>
           </div>
           <div className="flex items-center gap-x-3">
             {LIST_PROFILE.map((item) => (

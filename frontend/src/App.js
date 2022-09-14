@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "swiper/css";
 import "react-toastify/dist/ReactToastify.css";
+const NewProduct = lazy(() => import("pages/admin/NewProduct"));
 const AdminLayout = lazy(() => import("components/Layouts/AdminLayout"));
 const Dashboard = lazy(() => import("pages/admin/Dashboard"));
 const LoginPage = lazy(() => import("pages/LoginPage"));
@@ -26,6 +27,7 @@ function App() {
               </Route>
               <Route element=<AdminLayout />>
                 <Route path="manage/dashboard" element=<Dashboard />></Route>
+                <Route path="manage/newproduct" element=<NewProduct />></Route>
               </Route>
             </Route>
           </Routes>

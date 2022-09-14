@@ -92,3 +92,7 @@ body::-webkit-scrollbar-thumb,
   background: #f7c59f;
   color: white;
 }
+.tab_short .active {
+  background-color: #f7c59f;
+  color: white;
+}

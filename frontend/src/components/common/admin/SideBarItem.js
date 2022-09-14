@@ -34,11 +34,11 @@ const HaveSubMenu = ({ list, onClick, showMenu }) => {
       </div>
       <div
         className={`${
-          showMenu ? "h-20 max-h-[70px]" : "h-0"
+          showMenu ? "h-20 max-h-[75px]" : "h-0"
         } transition-all duration-500 bg-white overflow-hidden`}
       >
-        {list.subMenu.map((item) => (
-          <NoSubMenu item={item} sm />
+        {list.subMenu.map((item, index) => (
+          <NoSubMenu key={index} item={item} sm />
         ))}
       </div>
     </>

@@ -7,12 +7,14 @@ import axiosClient from "axios/configAxios";
 import { useDispatch } from "react-redux";
 import { useDebounce } from "hooks/useDebounce";
 import { toast } from "react-toastify";
+import useClickOutSide from "hooks/useClickOutSide";
 
-const InputSearch = ({ value = "", show = false, setShow = () => {} }) => {
+const InputSearch = ({ value = "" }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [listProduct, setListProduct] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearchTerm = useDebounce(searchValue, 500);
+  const { show, setShow, nodeRef } = useClickOutSide(".search-header");
   const dispatch = useDispatch();
   const handleInputChange = (e) => {
     setSearchValue(e.target.value);
@@ -57,6 +59,7 @@ const InputSearch = ({ value = "", show = false, setShow = () => {} }) => {
       <div className="flex items-center flex-1 w-full text-sm border-b-2 border-gray-300 div-search search-header">
         <IconSearch />
         <input
+          ref={nodeRef}
           onClick={() => {
             setShow(!show);
           }}
@@ -66,7 +69,7 @@ const InputSearch = ({ value = "", show = false, setShow = () => {} }) => {
           type="text"
           className="w-full h-full p-3 py-2 bg-transparent border-none outline-none"
         />
-        {value && <IconClose onClick={handleClearValue} />}
+        {searchValue && <IconClose onClick={handleClearValue} />}
       </div>
       <List data={listProduct} loading={isLoading} show={show}></List>
     </>

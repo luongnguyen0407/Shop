@@ -5,6 +5,7 @@ import { logOut, reqLogin, reqRegister, resConnect } from "./requestAuth";
 export function* handleLogin({ payload }) {
   try {
     yield put(setLoading(true));
+    yield put(setError(""));
     let res;
     if (!payload.rfpassword) {
       res = yield call(reqLogin, payload);
