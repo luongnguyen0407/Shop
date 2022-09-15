@@ -1,6 +1,10 @@
-import { all, call, put } from "redux-saga/effects";
+import { all, call, put, select } from "redux-saga/effects";
 import { setCategory, setLoading, setProduct } from "./productSlide";
-import { reqGetCategory, reqSearchProduct } from "./requestGetProduct";
+import {
+  addNewProduct,
+  reqGetCategory,
+  reqSearchProduct,
+} from "./requestProduct";
 
 export function* handleSearch({ payload }) {
   try {
@@ -17,6 +21,15 @@ export function* handleGetCategory() {
   try {
     const res = yield call(reqGetCategory);
     yield all([put(setCategory(res.categoryList))]);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* handleAddNewProduct({ payload }) {
+  try {
+    const { accessToken } = yield select((state) => state.auth.curentUser);
+    yield call(addNewProduct, payload, accessToken);
   } catch (error) {
     console.log(error);
   }

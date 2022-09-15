@@ -17,6 +17,7 @@ const product = createSlice({
       listCategory: action.payload,
     }),
     searchProduct: () => {},
+    addProduct: () => {},
     getCategory: () => {},
     setLoading: (state, action) => ({
       ...state,
@@ -31,5 +32,6 @@ export const {
   getCategory,
   setCategory,
   setLoading,
+  addProduct,
 } = product.actions;
 export default product.reducer;

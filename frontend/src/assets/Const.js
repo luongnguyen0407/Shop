@@ -510,3 +510,5 @@ export const DATA_CHAR = {
     },
   ],
 };
+
+export const imgbbAPI = `https://api.imgbb.com/1/upload?key=55707bd44a68a131b540327e9b99a0d8`;

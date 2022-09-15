@@ -7,7 +7,7 @@ import LazyLoad from "components/common/LazyLoad";
 const ProductCardItem = ({ data }) => {
   if (!data) return null;
   return (
-    <div className="cursor-pointer">
+    <div className="cursor-pointer min-h-[420px] relative pb-8">
       <LazyLoad className="object-cover w-full h-80" url={data.img} />
 
       {/* <img
@@ -15,13 +15,13 @@ const ProductCardItem = ({ data }) => {
         src={data.img}
         alt={data.title}
       /> */}
-      <div className="mt-2">
+      <div className="mt-2 ">
         <Title
           thin
           title={data.title}
-          className="mb-2 text-sm select-none text-grey_700 line-clamp-2"
+          className="flex-1 mb-2 text-sm select-none text-grey_700 line-clamp-2"
         />
-        <div className="flex items-center justify-between select-none">
+        <div className="absolute bottom-0 flex items-center justify-between w-full select-none">
           <Heading>{formatPrice(data.price)}$</Heading>
           <div className="p-1 text-white bg-black">+ Add to Basket</div>
         </div>

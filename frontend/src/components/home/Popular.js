@@ -41,7 +41,7 @@ const Popular = () => {
       <div className="mt-6 slider_popular">
         <Swiper
           className="h-full"
-          slidesPerView={2}
+          slidesPerView={4}
           modules={[Navigation]}
           loop={true}
           navigation
@@ -65,13 +65,15 @@ const Popular = () => {
               <CardSkeleton />
             </div>
           )}
-          {productList.length > 0 &&
-            !isLoading &&
-            productList.map((item) => (
-              <SwiperSlide key={item._id}>
-                <ProductCardItem data={item} />
-              </SwiperSlide>
-            ))}
+          <div className="grid grid-cols-4 gap-4">
+            {productList.length > 0 &&
+              !isLoading &&
+              productList.map((item) => (
+                <SwiperSlide key={item._id}>
+                  <ProductCardItem data={item} />
+                </SwiperSlide>
+              ))}
+          </div>
         </Swiper>
       </div>
     </div>

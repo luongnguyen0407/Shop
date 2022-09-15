@@ -55,22 +55,29 @@ const getCategory = async (req, res) => {
   }
 };
 // need role admin
-const addNewProduct = (req, res) => {
+const addNewProduct = async (req, res) => {
   const productData = req.body;
   console.log(productData);
   try {
-    const { title, desc, img, color, price } = productData;
-    if (!title || !desc || !img || !color || !price)
+    const { category, price, title, imgUpload } = productData;
+    if (!title || !category || !imgUpload || !price)
       return res.status(401).json({ success: false, message: "Missing data" });
-    const newProduct = new Product({ ...productData });
+
+    const uploadResponse = await cloudinary.uploader.upload(imgUpload, {
+      upload_preset: "jqheseq7",
+    });
+    const { secure_url } = uploadResponse;
+    const newProductData = {
+      title,
+      desc: "test",
+      img: secure_url,
+      slug: "test-1",
+      price,
+      categories: category,
+      brand: category,
+    };
+    const newProduct = new Product({ ...newProductData });
     newProduct.save();
-
-    // const data = req.body.img;
-    // const uploadResponse = await cloudinary.uploader.upload(data, {
-    //   upload_preset: "jqheseq7",
-    // });
-    // const { secure_url } = uploadResponse;
-
     return res.status(200).jsonp({
       success: true,
       message: "Create new product successfully",
