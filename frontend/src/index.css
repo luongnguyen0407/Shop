@@ -126,4 +126,5 @@ body::-webkit-scrollbar-thumb,
 }
 .app {
   height: 400px;
+  color: red;
 }
