@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "swiper/css";
 import "react-toastify/dist/ReactToastify.css";
+import MainLoading from "components/loading/MainLoading";
 const NewProduct = lazy(() => import("pages/admin/NewProduct"));
 const AdminLayout = lazy(() => import("components/Layouts/AdminLayout"));
 const Dashboard = lazy(() => import("pages/admin/Dashboard"));
@@ -15,7 +16,7 @@ const RegisterPage = lazy(() => import("pages/RegisterPage"));
 function App() {
   return (
     <div className="App">
-      <Suspense>
+      <Suspense fallback={<MainLoading />}>
         <ToastContainer theme="colored" />
         <Main>
           <Routes>

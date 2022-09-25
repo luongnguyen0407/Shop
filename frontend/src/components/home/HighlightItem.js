@@ -1,4 +1,3 @@
-import LazyLoad from "components/common/LazyLoad";
 import Heading from "components/heading/Heading";
 import PropTypes from "prop-types";
 
@@ -15,16 +14,15 @@ export const HighlightItem = ({ colGrid = "", url, card }) => {
         <p className="text-xs font-normal">{card.des}</p>
         <p className="text-sm font-normal">{card.voucher}</p>
       </div>
-      <LazyLoad
+      <img
+        src={url}
         className="object-cover w-full h-full !transition-all group-hover:scale-110"
-        url={url}
         alt=""
       />
     </div>
   );
 };
 HighlightItem.propTypes = {
-  // value: PropTypes.string
   colGrid: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   card: PropTypes.object.isRequired,

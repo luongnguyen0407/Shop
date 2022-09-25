@@ -111,3 +111,19 @@ body::-webkit-scrollbar-thumb,
   width: 1px;
   white-space: nowrap;
 }
+.quill {
+  position: relative;
+  height: 100%;
+}
+.quill .ql-toolbar {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+}
+.entry-content .ql-editor .ql-clipboard {
+  position: fixed;
+}
+.app {
+  height: 400px;
+}

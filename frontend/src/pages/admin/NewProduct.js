@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import ImageUploader from "quill-image-uploader";
 import { addProduct } from "redux/product/productSlide";
 import ReactQuill, { Quill } from "react-quill";
+import "../../style/Content.scss";
 import "react-quill/dist/quill.snow.css";
 import { imgbbAPI } from "assets/Const";
 import axios from "axios";
@@ -160,11 +161,12 @@ const NewProduct = () => {
           />
         </div>
       </div>
-      <div className="block mt-8 min-h-[300px]">
+      <div className="mt-8 entry-content">
         <ReactQuill
           modules={modules}
           theme="snow"
           value={des}
+          scrollingContainer="html"
           onChange={setDes}
         />
       </div>

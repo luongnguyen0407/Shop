@@ -2,13 +2,12 @@ import Heading from "components/heading/Heading";
 import formatPrice from "utils/formatPrice";
 import Title from "components/Title/Title";
 import React from "react";
-import LazyLoad from "components/common/LazyLoad";
 
 const ProductCardItem = ({ data }) => {
   if (!data) return null;
   return (
     <div className="cursor-pointer min-h-[420px] relative pb-8">
-      <LazyLoad className="object-cover w-full h-80" url={data.img} />
+      <img src={data.img} className="object-cover w-full h-80" alt="" />
 
       {/* <img
         className="object-cover w-full h-80"
