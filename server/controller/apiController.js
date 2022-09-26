@@ -57,10 +57,9 @@ const getCategory = async (req, res) => {
 // need role admin
 const addNewProduct = async (req, res) => {
   const productData = req.body;
-  console.log(productData);
   try {
-    const { category, price, title, imgUpload } = productData;
-    if (!title || !category || !imgUpload || !price)
+    const { category, price, title, imgUpload, slug, describe } = productData;
+    if (!title || !category || !imgUpload || !price || !slug || !describe)
       return res.status(401).json({ success: false, message: "Missing data" });
 
     const uploadResponse = await cloudinary.uploader.upload(imgUpload, {
@@ -69,9 +68,9 @@ const addNewProduct = async (req, res) => {
     const { secure_url } = uploadResponse;
     const newProductData = {
       title,
-      desc: "test",
+      desc: describe,
       img: secure_url,
-      slug: "test-1",
+      slug,
       price,
       categories: category,
       brand: category,
@@ -109,6 +108,22 @@ const addNewCategory = async (req, res) => {
     res.status(500).json({ err: "Something went wrong" });
   }
 };
+const getDetailProduct = async (req, res) => {
+  const { slug } = req.query;
+  try {
+    if (!slug)
+      return res.status(401).json({ success: false, message: "Missing data" });
+    const product = await Product.findOne({ slug });
+    return res.status(200).jsonp({
+      success: true,
+      message: "successfully",
+      product,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ err: "Something went wrong" });
+  }
+};
 
 //need user
 const addCart = async (req, res) => {
@@ -122,4 +137,5 @@ module.exports = {
   addNewCategory,
   getCategory,
   addCart,
+  getDetailProduct,
 };

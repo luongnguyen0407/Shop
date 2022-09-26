@@ -1,28 +1,30 @@
-import Input from "components/input/Input";
-import React, { useEffect, useMemo, useState } from "react";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import Field from "components/Field/Field";
-import Label from "components/label/Label";
-import DropDown from "components/DropDown/DropDown";
-import ImgUpLoad from "components/common/admin/ImgUpLoad";
-import { toast } from "react-toastify";
-import Button from "components/button/Button";
-import { ImgToBase64 } from "utils/CoverImgToBase64";
-import { useDispatch } from "react-redux";
-import ImageUploader from "quill-image-uploader";
-import { addProduct } from "redux/product/productSlide";
-import ReactQuill, { Quill } from "react-quill";
-import "../../style/Content.scss";
-import "react-quill/dist/quill.snow.css";
 import { imgbbAPI } from "assets/Const";
 import axios from "axios";
+import axiosClient from "axios/configAxios";
+import Button from "components/button/Button";
+import ImgUpLoad from "components/common/admin/ImgUpLoad";
+import DropDown from "components/DropDown/DropDown";
+import Field from "components/Field/Field";
+import Input from "components/input/Input";
+import Label from "components/label/Label";
+import ImageUploader from "quill-image-uploader";
+import { useEffect, useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
+import ReactQuill, { Quill } from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import slugify from "slugify";
+import { ImgToBase64 } from "utils/CoverImgToBase64";
+import * as yup from "yup";
+import "../../style/Content.scss";
 Quill.register("modules/imageUploader", ImageUploader);
 const NewProduct = () => {
   const [selectImageFile, setSelectImageFile] = useState();
   const [des, setDes] = useState("");
-  const dispatch = useDispatch();
+  const { accessToken } = useSelector((state) => state.auth.curentUser);
+  // const dispatch = useDispatch();
   const [previewUrl, setPreviewUrl] = useState("");
   const schema = yup.object({
     title: yup.string().required("Name product is required"),
@@ -37,25 +39,59 @@ const NewProduct = () => {
     control,
     formState: { errors },
     setValue,
+    reset,
   } = useForm({
-    mode: "onChange",
+    mode: "onSubmit",
     defaultValues: {
       title: "",
       price: "",
       category: "",
       img: false,
+      describe: "",
+      slug: "",
     },
     resolver: yupResolver(schema),
   });
   const SubmbitHandler = async (value) => {
-    console.log(value);
+    if (!des) {
+      toast.error("Describe product is required");
+    }
+    value.describe = des;
+    value.slug = slugify(value.title, {
+      lower: true,
+      locale: "vi",
+      remove: /[*+~.()'"!:@]/g,
+    });
     const imgUpload = await ImgToBase64(selectImageFile);
     const data = {
       ...value,
       imgUpload,
     };
     if (imgUpload) {
-      dispatch(addProduct(data));
+      // dispatch(addProduct(data));
+      try {
+        axiosClient.request({
+          method: "post",
+          url: "/v1/addproduct",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          data: { ...data },
+        });
+        toast.success("Create new product success");
+        reset({
+          title: "",
+          price: "",
+          category: "",
+          img: false,
+          describe: "",
+          slug: "",
+        });
+        setDes("");
+      } catch (error) {
+        console.log(error);
+        toast.error("Server not responding");
+      }
     }
   };
   const handleSelectImg = (e) => {
@@ -139,7 +175,7 @@ const NewProduct = () => {
           </Field>
           <Field>
             <Label dark htmlFor="category">
-              Name Product
+              Category
             </Label>
             <DropDown setValue={setValue} control={control} name="category" />
           </Field>

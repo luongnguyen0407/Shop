@@ -50,7 +50,7 @@ const DropDown = ({ control, name, setValue }) => {
         </svg>
       </div>
       {show && listCategory.length > 0 && (
-        <div className={`absolute left-0 w-full`}>
+        <div className={`shadow-lg absolute left-0 w-full bg-white`}>
           {listCategory.map((category) => (
             <div
               key={category._id}

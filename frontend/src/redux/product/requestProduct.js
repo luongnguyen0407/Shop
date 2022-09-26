@@ -23,14 +23,3 @@ export const uploadImage = () => {
     url: "/v1/getcategory",
   });
 };
-
-export const addNewProduct = (data, accessToken) => {
-  return axiosClient.request({
-    method: "post",
-    url: "/v1/addproduct",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-    data: { ...data },
-  });
-};

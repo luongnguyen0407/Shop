@@ -13,7 +13,7 @@ const AuthLayout = ({ children }) => {
   }, [navigate, curentUser]);
   return (
     <div className="flex items-center justify-center w-full min-h-screen bg-auth_bg">
-      <div className="w-3/4 grid grid-cols-2 h-[450px] overflow-hidden rounded-3xl ">
+      <div className="w-3/4 grid grid-cols-2 h-[450px] xl:h-[550px] xl:w-2/4 overflow-hidden rounded-3xl ">
         <div>
           <img
             className="block object-cover w-full h-full"

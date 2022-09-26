@@ -7,6 +7,7 @@ const route = express.Router();
 const initApiRoute = (app) => {
   route.get("/getproduct", apiController.getProduct);
   route.get("/getcategory", apiController.getCategory);
+  route.get("/product", apiController.getDetailProduct);
   route.post("/addcart", verifyMiddle.verifyToken, apiController.addCart);
   route.post(
     "/addproduct",

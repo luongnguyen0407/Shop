@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "swiper/css";
 import "react-toastify/dist/ReactToastify.css";
 import MainLoading from "components/loading/MainLoading";
+const DetailProduct = lazy(() => import("pages/DetailProduct"));
 const NewProduct = lazy(() => import("pages/admin/NewProduct"));
 const AdminLayout = lazy(() => import("components/Layouts/AdminLayout"));
 const Dashboard = lazy(() => import("pages/admin/Dashboard"));
@@ -25,6 +26,7 @@ function App() {
               <Route path="register" element={<RegisterPage />}></Route>
               <Route element=<MainLayout />>
                 <Route index element=<HomePage />></Route>
+                <Route path="product/:slug" element=<DetailProduct />></Route>
               </Route>
               <Route element=<AdminLayout />>
                 <Route path="manage/dashboard" element=<Dashboard />></Route>

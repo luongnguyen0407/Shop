@@ -24,7 +24,10 @@ const List = ({ data, show = true, nodeRef, loading = false }) => {
                 key={item._id}
                 className="p-1 transition-colors hover:bg-slate-100"
               >
-                <Link to={"/"} className="flex overflow-hidden gap-x-2">
+                <Link
+                  to={`/product/${item.slug}`}
+                  className="flex overflow-hidden gap-x-2"
+                >
                   <img
                     className="max-w-[50px] h-[50px] object-cover rounded-md"
                     src={item.img}
