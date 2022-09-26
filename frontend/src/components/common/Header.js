@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <>
-      <div className="px-2 py-3 bg-text3">
+      <header className="px-2 py-3 bg-text3">
         <div className="flex items-center justify-between container-fix">
           <Link to={"/"}>
             <Heading className="text-2xl font-normal text-grey_700">
@@ -34,7 +34,7 @@ const Header = () => {
             <Profile />
           </div>
         </div>
-      </div>
+      </header>
       <Category />
     </>
   );

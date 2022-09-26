@@ -12,7 +12,7 @@ import { withErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "components/common/ErrorFallback";
 const Popular = () => {
   const [isLoading, setIsLoading] = useState();
-  const [productList, setListProduct] = useState([]);
+  const [listProduct, setListProduct] = useState();
 
   useEffect(() => {
     const handleFetchProduct = async () => {
@@ -43,7 +43,6 @@ const Popular = () => {
           className="h-full"
           slidesPerView={4}
           modules={[Navigation]}
-          loop={true}
           navigation
           spaceBetween={30}
           breakpoints={{
@@ -66,9 +65,9 @@ const Popular = () => {
             </div>
           )}
           <div className="grid grid-cols-4 gap-4">
-            {productList.length > 0 &&
+            {listProduct &&
               !isLoading &&
-              productList.map((item) => (
+              listProduct.map((item) => (
                 <SwiperSlide key={item._id}>
                   <ProductCardItem data={item} />
                 </SwiperSlide>

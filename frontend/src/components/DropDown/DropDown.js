@@ -1,3 +1,4 @@
+import IconDown from "components/Icon/IconDown";
 import useClickOutSide from "hooks/useClickOutSide";
 import React from "react";
 import { useState } from "react";
@@ -34,23 +35,10 @@ const DropDown = ({ control, name, setValue }) => {
         className="flex items-center justify-between p-2 bg-gray-200 border border-gray-200 rounded-lg"
       >
         <p>{selectCategory}</p>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
+        <IconDown />
       </div>
       {show && listCategory.length > 0 && (
-        <div className={`shadow-lg absolute left-0 w-full bg-white`}>
+        <div className={`shadow-lg absolute left-0 w-full bg-white z-20`}>
           {listCategory.map((category) => (
             <div
               key={category._id}

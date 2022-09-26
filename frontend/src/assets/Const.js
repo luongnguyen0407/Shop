@@ -511,4 +511,38 @@ export const DATA_CHAR = {
   ],
 };
 
+export const DETAIL_COLOR = [
+  {
+    id: 1,
+    color: "bg-pink-300",
+    des: "Pink",
+    text: "text-pink-300",
+  },
+  {
+    id: 2,
+    color: "bg-black",
+    des: "Black",
+    text: "text-black",
+  },
+  {
+    id: 3,
+    color: "bg-yellow-300",
+    des: "Yellow",
+    text: "text-yellow-300",
+  },
+];
+export const SIZE = [
+  {
+    id: 1,
+    size: "L",
+  },
+  {
+    id: 2,
+    size: "M",
+  },
+  {
+    id: 3,
+    size: "XL",
+  },
+];
 export const imgbbAPI = `https://api.imgbb.com/1/upload?key=55707bd44a68a131b540327e9b99a0d8`;

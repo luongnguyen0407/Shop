@@ -23,6 +23,8 @@ Quill.register("modules/imageUploader", ImageUploader);
 const NewProduct = () => {
   const [selectImageFile, setSelectImageFile] = useState();
   const [des, setDes] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [imagesSlider, setImagesSlider] = useState([]);
   const { accessToken } = useSelector((state) => state.auth.curentUser);
   // const dispatch = useDispatch();
   const [previewUrl, setPreviewUrl] = useState("");
@@ -56,6 +58,7 @@ const NewProduct = () => {
     if (!des) {
       toast.error("Describe product is required");
     }
+    setLoading(true);
     value.describe = des;
     value.slug = slugify(value.title, {
       lower: true,
@@ -66,11 +69,11 @@ const NewProduct = () => {
     const data = {
       ...value,
       imgUpload,
+      imagesSlider,
     };
     if (imgUpload) {
-      // dispatch(addProduct(data));
       try {
-        axiosClient.request({
+        await axiosClient.request({
           method: "post",
           url: "/v1/addproduct",
           headers: {
@@ -78,7 +81,6 @@ const NewProduct = () => {
           },
           data: { ...data },
         });
-        toast.success("Create new product success");
         reset({
           title: "",
           price: "",
@@ -87,10 +89,13 @@ const NewProduct = () => {
           describe: "",
           slug: "",
         });
+        setLoading(false);
+        toast.success("Create new product success");
         setDes("");
       } catch (error) {
         console.log(error);
-        toast.error("Server not responding");
+        setLoading(false);
+        toast.error("Missing data");
       }
     }
   };
@@ -119,13 +124,24 @@ const NewProduct = () => {
     setSelectImageFile("");
     setValue("img", false);
   };
+  const handleImageSlider = (e) => {
+    setImagesSlider([]);
+    const files = Array.from(e.target.files);
+    if (files.length > 3) {
+      toast.warning("Too many pictures");
+    }
+    files.forEach(async (file) => {
+      const img = await ImgToBase64(file);
+      setImagesSlider((pev) => [...pev, img]);
+    });
+  };
+
   useEffect(() => {
     if (errors) {
       const firstErr = Object.values(errors);
       toast.error(firstErr[0]?.message);
     }
   }, [errors]);
-
   const modules = useMemo(
     () => ({
       toolbar: [
@@ -158,7 +174,11 @@ const NewProduct = () => {
     []
   );
   return (
-    <form onSubmit={handleSubmit(SubmbitHandler)} className="p-3 mt-2">
+    <form
+      onSubmit={handleSubmit(SubmbitHandler)}
+      className="p-3 mt-2"
+      encType="multipart/form-data"
+    >
       <div className="flex gap-4">
         <div className="flex-1">
           <Field>
@@ -172,6 +192,12 @@ const NewProduct = () => {
               Price
             </Label>
             <Input name="price" control={control}></Input>
+          </Field>
+          <Field>
+            <Label dark htmlFor="price">
+              Image Slider (2 image)
+            </Label>
+            <input onChange={handleImageSlider} type="file" multiple />
           </Field>
           <Field>
             <Label dark htmlFor="category">
@@ -207,7 +233,9 @@ const NewProduct = () => {
         />
       </div>
       <div className="mt-8">
-        <Button type="submit">Submit</Button>
+        <Button isLoading={loading} type="submit">
+          Submit
+        </Button>
       </div>
     </form>
   );

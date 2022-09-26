@@ -1,0 +1,20 @@
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+.slider_product {
+  .swiper-free-mode.swiper-watch-progress.mySwiper.swiper-thumbs {
+    margin-top: 20px;
+  }
+  .mySwiper2.swiper-backface-hidden {
+    .swiper-slide img {
+      min-height: 600px;
+      max-height: 600px;
+    }
+  }
+}

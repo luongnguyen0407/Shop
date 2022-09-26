@@ -58,10 +58,30 @@ const getCategory = async (req, res) => {
 const addNewProduct = async (req, res) => {
   const productData = req.body;
   try {
-    const { category, price, title, imgUpload, slug, describe } = productData;
-    if (!title || !category || !imgUpload || !price || !slug || !describe)
+    const { category, price, title, imgUpload, slug, describe, imagesSlider } =
+      productData;
+    if (
+      !title ||
+      !category ||
+      !imgUpload ||
+      !price ||
+      !slug ||
+      !describe ||
+      !imagesSlider[0]
+    )
       return res.status(401).json({ success: false, message: "Missing data" });
-
+    let imagesBuffer = [];
+    if (imagesSlider.length > 0) {
+      for (let i = 0; i < imagesSlider.length; i++) {
+        const { secure_url } = await cloudinary.uploader.upload(
+          imagesSlider[i],
+          {
+            upload_preset: "jqheseq7",
+          }
+        );
+        imagesBuffer.push(secure_url);
+      }
+    }
     const uploadResponse = await cloudinary.uploader.upload(imgUpload, {
       upload_preset: "jqheseq7",
     });
@@ -74,6 +94,7 @@ const addNewProduct = async (req, res) => {
       price,
       categories: category,
       brand: category,
+      imgSlider: imagesBuffer,
     };
     const newProduct = new Product({ ...newProductData });
     newProduct.save();
