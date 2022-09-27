@@ -6,9 +6,12 @@ import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import "./SliderProduct.scss";
 import { FreeMode, Thumbs } from "swiper";
+import { withErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "components/common/ErrorFallback";
 const DetailsProductSlider = ({ listImg }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   if (listImg.length <= 0) return;
+  console.log(listImg);
   return (
     <div className="h-full slider_product">
       <Swiper
@@ -43,4 +46,6 @@ const DetailsProductSlider = ({ listImg }) => {
   );
 };
 
-export default memo(DetailsProductSlider);
+export default withErrorBoundary(memo(DetailsProductSlider), {
+  FallbackComponent: ErrorFallback,
+});
