@@ -6,7 +6,7 @@
   h3,
   h4 {
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   h2 {
     font-size: 32px;
@@ -18,14 +18,14 @@
     font-size: 22px;
   }
   p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     line-height: 2;
   }
   figure {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   figure img {
-    border-radius: 20px;
+    border-radius: 10px;
     margin-bottom: 10px;
   }
   figcaption {
@@ -37,6 +37,7 @@
   img {
     margin: 20px auto;
     border-radius: 20px;
+    max-height: 500px;
   }
 }
 @media screen and (max-width: 1023.98px) {

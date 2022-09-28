@@ -1,6 +1,7 @@
 import HeadingXl from "components/heading/HeadingXl";
+import IconArrow from "components/Icon/IconArrow";
 import React from "react";
-import ButtonArrow from "components/button/ButtonArrow";
+import ButtonArrow from "components/button/ButtonIcon";
 import CountDownShow from "./CountDownShow";
 import { withErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "components/common/ErrorFallback";
@@ -21,7 +22,10 @@ const CountdownEvent = () => {
             <HeadingXl>
               SUMMER <p className="inline text-secondary">COLLECTIONS</p>
             </HeadingXl>
-            <ButtonArrow className="my-3 bg-text3 text-secondary">
+            <ButtonArrow
+              className="my-3 bg-text3 text-secondary"
+              icon={<IconArrow />}
+            >
               SHOP NOW
             </ButtonArrow>
           </div>

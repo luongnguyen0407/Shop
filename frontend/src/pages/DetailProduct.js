@@ -1,5 +1,7 @@
 import { DETAIL_COLOR, SIZE } from "assets/Const";
 import axiosClient from "axios/configAxios";
+import { AiOutlineShoppingCart, AiOutlineShopping } from "react-icons/ai";
+import ButtonIcon from "components/button/ButtonIcon";
 import Tag from "components/common/Tag";
 import DropDownSize from "components/DropDown/DropDownSize";
 import DetailsProductSlider from "components/Slider/DetailsProductSlider";
@@ -8,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import formatPrice from "utils/formatPrice";
 import HeadingXl from "../components/heading/HeadingXl";
+import ProductFor from "modules/ProductFor";
 const DetailProduct = () => {
   const { slug } = useParams();
   const [product, setProduct] = useState();
@@ -48,13 +51,8 @@ const DetailProduct = () => {
   if (!product || !listImg) return;
   return (
     <div className="container-fix min-h-[500px] py-10 px-2 border-t">
-      <div className="grid w-full grid-cols-2 p-3 bg-white gap-x-10">
-        <div className="h-[700px] overflow-hidden group cursor-pointer">
-          {/* <img
-            className="object-cover w-full h-full transition-all group-hover:scale-110"
-            src={product.img}
-            alt=""
-          /> */}
+      <div className="flex justify-center w-full p-3 bg-white gap-x-10">
+        <div className="h-[600px] w-2/5 overflow-hidden group cursor-pointer">
           <DetailsProductSlider listImg={listImg} />
         </div>
         <div>
@@ -82,7 +80,24 @@ const DetailProduct = () => {
               {formatPrice(product?.price)}đ
             </span>
           </div>
+          <div className="flex mt-10 gap-x-2">
+            <ButtonIcon
+              className="min-w-[200px] w-full text-white  rounded-md bg-primary"
+              icon={<AiOutlineShoppingCart />}
+            >
+              Add Card
+            </ButtonIcon>
+            <ButtonIcon
+              className="w-full text-red-400 bg-red-200 border border-red-400 rounded-md"
+              icon={<AiOutlineShopping />}
+            >
+              Buy Now
+            </ButtonIcon>
+          </div>
         </div>
+      </div>
+      <div className="mt-5">
+        <ProductFor data={product.desc} />
       </div>
     </div>
   );

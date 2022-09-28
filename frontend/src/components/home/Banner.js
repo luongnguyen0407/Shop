@@ -1,11 +1,12 @@
 import React from "react";
-import ButtonArrow from "components/button/ButtonArrow";
+import ButtonArrow from "components/button/ButtonIcon";
 import HeadingXl from "components/heading/HeadingXl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import { BANNER_IMG } from "assets/Const";
 import { withErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "components/common/ErrorFallback";
+import IconArrow from "components/Icon/IconArrow";
 const Banner = () => {
   return (
     <div className="relative h-[500px] xl:h-[600px] p-20 flex items-start md:items-end pb-7 justify-center">
@@ -34,7 +35,10 @@ const Banner = () => {
           Get up to 30% off
         </HeadingXl>
         <HeadingXl className="text-secondary">New Arrivals</HeadingXl>
-        <ButtonArrow className="float-right border border-white text-text3">
+        <ButtonArrow
+          className="float-right border border-white text-text3"
+          icon={<IconArrow />}
+        >
           Place your Order
         </ButtonArrow>
       </div>
