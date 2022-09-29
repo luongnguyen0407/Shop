@@ -8,7 +8,7 @@ const AuthLayout = ({ children }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (curentUser.accessToken) {
-      navigate("/");
+      navigate(-1);
     }
   }, [navigate, curentUser]);
   return (

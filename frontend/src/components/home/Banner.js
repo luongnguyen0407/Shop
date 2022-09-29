@@ -9,7 +9,7 @@ import ErrorFallback from "components/common/ErrorFallback";
 import IconArrow from "components/Icon/IconArrow";
 const Banner = () => {
   return (
-    <div className="relative h-[500px] xl:h-[600px] p-20 flex items-start md:items-end pb-7 justify-center">
+    <div className="relative h-[500px] 2xl:h-[600px] p-20 flex items-start md:items-end pb-7 justify-center">
       <div className="absolute inset-0 w-full h-full">
         <Swiper
           className="h-full"

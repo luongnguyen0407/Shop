@@ -4,7 +4,6 @@ import List from "components/common/List";
 import IconSearch from "components/Icon/IconSearch";
 import IconClose from "components/Icon/IconClose";
 import axiosClient from "axios/configAxios";
-import { useDispatch } from "react-redux";
 import { useDebounce } from "hooks/useDebounce";
 import { toast } from "react-toastify";
 import useClickOutSide from "hooks/useClickOutSide";
@@ -15,7 +14,6 @@ const InputSearch = () => {
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearchTerm = useDebounce(searchValue, 500);
   const { show, setShow, nodeRef } = useClickOutSide(".search-header");
-  const dispatch = useDispatch();
   const handleInputChange = (e) => {
     setSearchValue(e.target.value);
   };
@@ -53,7 +51,7 @@ const InputSearch = () => {
     } else {
       setListProduct([]);
     }
-  }, [debouncedSearchTerm, dispatch, setShow]);
+  }, [debouncedSearchTerm, setShow]);
   return (
     <>
       <div className="flex items-center flex-1 w-full text-sm border-b-2 border-gray-300 div-search search-header">

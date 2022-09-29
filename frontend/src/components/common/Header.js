@@ -8,11 +8,33 @@ import Category from "./Category";
 import { withErrorBoundary } from "react-error-boundary";
 import { LIST_PROFILE } from "assets/Const";
 import { Link } from "react-router-dom";
+// import { useEffect } from "react";
+// import { debounce } from "lodash";
+// import { useRef } from "react";
 
 const Header = () => {
+  //fixed header
+
+  // const HeadRef = useRef(null);
+  // useEffect(() => {
+  //   const windowScroollHandler = debounce((e) => {
+  //     if (window.window.scrollY > HeadRef.current.clientHeight) {
+  //       HeadRef.current.classList.add("fixed");
+  //       document.body.style.paddingTop = HeadRef.current.clientHeight + "px";
+  //     } else if (window.window.scrollY < HeadRef.current.clientHeight) {
+  //       HeadRef.current.classList.remove("fixed");
+  //       document.body.style.paddingTop = "0px";
+  //     }
+  //   }, 500);
+  //   window.addEventListener("scroll", windowScroollHandler);
+  //   return () => {
+  //     window.removeEventListener("scroll", windowScroollHandler);
+  //   };
+  // }, []);
+
   return (
     <>
-      <header className="px-2 py-3 bg-text3">
+      <header className="top-0 z-50 w-full px-2 py-3 bg-text3 ">
         <div className="flex items-center justify-between container-fix">
           <Link to={"/"}>
             <Heading className="text-2xl font-normal text-grey_700">
