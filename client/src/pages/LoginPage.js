@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Heading from "components/heading/Heading";
 import Label from "components/label/Label";
-import AuthLayout from "components/Layouts/AuthLayout";
+import AuthLayout from "components/layouts/AuthLayout";
 import Input from "components/input/Input";
 import Field from "components/Field/Field";
 import Button from "components/button/Button";

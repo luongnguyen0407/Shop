@@ -1,18 +1,18 @@
+import MainLoading from "components/loading/MainLoading";
 import Main from "pages/Main";
-import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import "swiper/css";
 import "react-toastify/dist/ReactToastify.css";
-import MainLoading from "components/loading/MainLoading";
-const DetailProduct = lazy(() => import("pages/DetailProduct"));
+const RegisterPage = lazy(() => import("pages/RegisterPage"));
 const NewProduct = lazy(() => import("pages/admin/NewProduct"));
-const AdminLayout = lazy(() => import("components/Layouts/AdminLayout"));
-const Dashboard = lazy(() => import("pages/admin/Dashboard"));
+const MainLayout = lazy(() => import("components/layouts/MainLayout"));
 const LoginPage = lazy(() => import("pages/LoginPage"));
 const HomePage = lazy(() => import("pages/HomePage"));
-const MainLayout = lazy(() => import("components/Layouts/MainLayout"));
-const RegisterPage = lazy(() => import("pages/RegisterPage"));
+const DetailProduct = lazy(() => import("pages/DetailProduct"));
+const Dashboard = lazy(() => import("pages/admin/Dashboard"));
+const AdminLayout = lazy(() => import("components/layouts/AdminLayout"));
 
 function App() {
   return (

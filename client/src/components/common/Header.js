@@ -1,4 +1,4 @@
-import Title from "components/Title/Title";
+import Title from "components/title/Title";
 import React from "react";
 import Profile from "./Profile";
 import InputSearch from "components/input/InputSearch";

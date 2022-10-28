@@ -3,9 +3,9 @@ import axiosClient from "axios/configAxios";
 import { AiOutlineShoppingCart, AiOutlineShopping } from "react-icons/ai";
 import ButtonIcon from "components/button/ButtonIcon";
 import Tag from "components/common/Tag";
-import DropDownSize from "components/DropDown/DropDownSize";
-import DetailsProductSlider from "components/Slider/DetailsProductSlider";
-import Title from "components/Title/Title";
+import DropDownSize from "components/dropDown/DropDownSize";
+import DetailsProductSlider from "components/slider/DetailsProductSlider";
+import Title from "components/title/Title";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import formatPrice from "utils/formatPrice";
@@ -96,7 +96,7 @@ const DetailProduct = () => {
           </div>
         </div>
       </div>
-      <div className="mt-5">
+      <div className="mt-5 border-t border-slate-300">
         <ProductFor data={product.desc} />
       </div>
     </div>

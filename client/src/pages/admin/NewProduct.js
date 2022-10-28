@@ -4,7 +4,7 @@ import axios from "axios";
 import axiosClient from "axios/configAxios";
 import Button from "components/button/Button";
 import ImgUpLoad from "components/common/admin/ImgUpLoad";
-import DropDown from "components/DropDown/DropDown";
+import DropDown from "components/dropDown/DropDown";
 import Field from "components/Field/Field";
 import Input from "components/input/Input";
 import Label from "components/label/Label";
@@ -151,6 +151,7 @@ const NewProduct = () => {
         [{ list: "ordered" }, { list: "bullet" }],
         [{ header: [1, 2, 3, 4, 5, 6, false] }],
         ["link", "image"],
+        [{ align: [] }],
       ],
       imageUploader: {
         // imgbbAPI

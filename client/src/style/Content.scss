@@ -37,8 +37,23 @@
   img {
     margin: 20px auto;
     border-radius: 20px;
-    max-height: 500px;
+    max-height: 300px;
+    width: 200px;
+    display: inline;
   }
+}
+.bg-article {
+  background: linear-gradient(
+    to bottom,
+    rgba(255 255 255/0),
+    rgba(255 255 255/62.5),
+    rgba(255 255 255/1)
+  );
+  bottom: 0px;
+  height: 85px;
+  left: 0;
+  position: absolute;
+  width: 100%;
 }
 @media screen and (max-width: 1023.98px) {
   .entry-content .ql-editor,

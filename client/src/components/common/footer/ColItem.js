@@ -1,5 +1,5 @@
 import Heading from "components/heading/Heading";
-import Title from "components/Title/Title";
+import Title from "components/title/Title";
 import PropTypes from "prop-types";
 
 const ColItem = ({ data, title }) => {

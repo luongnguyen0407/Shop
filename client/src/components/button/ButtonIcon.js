@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const ButtonIcon = ({ to = "", children, className = "", icon }) => {
+const ButtonIcon = ({ to = "", children, className = "", icon = "" }) => {
   return (
     <Link to={to}>
       <button
